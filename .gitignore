@@ -1,4 +1,4 @@
 node_modules
 public
-static/css
-static/js
+static/css/*.css
+static/js/*.js
