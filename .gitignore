@@ -1,5 +1,4 @@
 node_modules
 public
-static/*.css
-static/*.js
-static/*.js.map
+static/css
+static/js

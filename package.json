@@ -5,7 +5,7 @@
   "description": "Starter HUGO theme with NPM as building tool",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -f static/*.js static/*.css",
+    "clean": "rm -f static/js/*.js* static/css/*.css",
     "babel:build": "babel static-src/assets/js --out-file static/js/site.js --source-maps",
     "babel:watch": "babel static-src/assets/js --watch --out-file static/js/site.js --source-maps",
     "less:watch": "onchange \"static-src/assets/less/**/*.less\" -- npm run less:build",
