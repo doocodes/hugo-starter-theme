@@ -9,7 +9,7 @@
     "babel:build": "babel static-src/assets/js --out-file static/js/site.js --source-maps",
     "babel:watch": "babel static-src/assets/js --watch --out-file static/js/site.js --source-maps",
     "less:watch": "onchange \"static-src/assets/less/**/*.less\" -- npm run less:build",
-    "less:vendors": "lessc --include-path=node_modules/bootstrap-less/bootstrap/ static-src/assets/less/vendors.less vendors.css",
+    "less:vendors": "lessc --include-path=node_modules/bootstrap-less/bootstrap/ static-src/assets/less/vendors.less static/css/vendors.css",
     "less:build": "lessc static-src/assets/less/site.less static/css/site.css",
     "build:assets": "npm run clean && npm run less:build && npm run less:vendors && npm run babel:build",
     "build": "npm run build:assets && cd ../../ && hugo",
