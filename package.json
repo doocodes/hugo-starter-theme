@@ -1,0 +1,44 @@
+{
+  "name": "docodes-hugo-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Starter HUGO theme with NPM as building tool",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -f static/*.js static/*.css",
+    "babel:build": "babel static-src/assets/js --out-file static/js/site.js --source-maps",
+    "babel:watch": "babel static-src/assets/js --watch --out-file static/js/site.js --source-maps",
+    "less:watch": "onchange \"static-src/assets/less/**/*.less\" -- npm run less:build",
+    "less:vendors": "lessc --include-path=node_modules/bootstrap-less/bootstrap/ static-src/assets/less/vendors.less vendors.css",
+    "less:build": "lessc static-src/assets/less/site.less static/css/site.css",
+    "build:assets": "npm run clean && npm run less:build && npm run less:vendors && npm run babel:build",
+    "build": "npm run build:assets && cd ../../ && hugo",
+    "build:docodes": "npm run build:assets && cd ../../ && hugo --baseURL https://__baseurl__",
+    "start": "npm run clean && npm run less:build && npm run babel:build && parallelshell \"npm run less:watch\" \"npm run babel:watch\" \"npm run hugo:serve\"",
+    "hugo:serve": "cd ../../ && hugo serve",
+    "deploy": "cd ../../ && surge public/ https://__baseurl__",
+    "predeploy": "npm run build",
+    "postdeploy": "echo '[GOOD NEWS] shipped!'"
+  },
+  "keywords": [
+    "Starter",
+    "responsive",
+    "npm",
+    "hugo"
+  ],
+  "author": "Milos Djordjevic",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-babili": "^0.1.4",
+    "less": "^2.7.3",
+    "onchange": "^3.3.0",
+    "parallelshell": "^3.0.2"
+  },
+  "dependencies": {
+    "bootstrap-less": "^3.3.8",
+    "imagesloaded": "^4.1.3",
+    "jquery": "^3.2.1",
+    "waypoints": "^4.0.1"
+  }
+}
